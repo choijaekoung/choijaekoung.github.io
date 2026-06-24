@@ -2,12 +2,9 @@
 
 Personal academic CV website for GitHub Pages.
 
-## Files
+Upload these files to the root of `choijaekoung.github.io`:
 
-- `index.html`: one-page CV website
-- `style.css`: website styling
-- `assets/profile.jpg`: profile photo
-
-## Deploy
-
-Upload `index.html`, `style.css`, `README.md`, and the `assets` folder to the root of `choijaekoung.github.io`.
+- `index.html`
+- `style.css`
+- `assets/profile.jpg`
+- `README.md`

@@ -1,6 +1,6 @@
 :root {
-  --text: #454a4f;
-  --heading: #3f4448;
+  --text: #4d545a;
+  --heading: #41474d;
   --muted: #666d73;
   --line: #e7e7e7;
   --link: #2f9dbc;
@@ -50,7 +50,7 @@ a {
   display: inline-flex;
   align-items: center;
   height: 62px;
-  color: #757b81;
+  color: #747b82;
   text-decoration: none;
   font-size: 17px;
 }
@@ -86,12 +86,12 @@ a {
 }
 
 .profile-photo {
-  width: 170px;
-  height: 220px;
+  width: 158px;
+  height: 205px;
   object-fit: cover;
   object-position: center top;
   display: block;
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   border-radius: 3px;
   border: 1px solid #eeeeee;
 }
@@ -99,7 +99,7 @@ a {
 .sidebar-name {
   margin: 0 0 6px;
   color: var(--heading);
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
 }
 
@@ -119,10 +119,14 @@ a {
 }
 
 .side-icon {
-  width: 14px;
-  height: 14px;
-  flex: 0 0 14px;
-  fill: var(--heading);
+  width: 15px !important;
+  height: 15px !important;
+  max-width: 15px !important;
+  max-height: 15px !important;
+  min-width: 15px;
+  flex: 0 0 15px;
+  fill: currentColor;
+  color: var(--heading);
 }
 
 .content {
@@ -194,8 +198,7 @@ a {
   font-size: 16px;
 }
 
-.timeline-content p,
-.project-item p {
+.timeline-content p {
   color: var(--muted);
   margin: 0;
 }
@@ -212,15 +215,32 @@ a {
   color: var(--muted);
 }
 
-.project-item {
-  margin: 0 0 26px;
+.project-list {
+  margin: 0;
+  padding-left: 22px;
+  list-style-type: disc;
+}
+
+.project-list > li {
+  margin: 0 0 14px;
   padding-left: 0;
 }
 
-.project-item h3 {
-  margin: 0 0 7px;
-  color: #111827;
-  font-size: 16px;
+.project-title {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.project-meta-list {
+  margin: 2px 0 0;
+  padding-left: 28px;
+  list-style-type: circle;
+}
+
+.project-meta-list li {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 15px;
 }
 
 @media (max-width: 900px) {
@@ -237,16 +257,20 @@ a {
 
   .sidebar {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 140px 1fr;
     column-gap: 20px;
     align-items: start;
   }
 
   .profile-photo {
     grid-row: span 3;
-    width: 150px;
-    height: 194px;
+    width: 140px;
+    height: 182px;
     margin-bottom: 0;
+  }
+
+  .sidebar-links {
+    grid-column: 2;
   }
 
   .section h1 {
@@ -274,8 +298,8 @@ a {
   }
 
   .profile-photo {
-    width: 145px;
-    height: 188px;
+    width: 140px;
+    height: 182px;
     margin-bottom: 14px;
   }
 
@@ -297,5 +321,9 @@ a {
 
   .timeline-date {
     margin-bottom: 8px;
+  }
+
+  .project-meta-list {
+    padding-left: 20px;
   }
 }
