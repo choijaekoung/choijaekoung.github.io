@@ -87,14 +87,24 @@
       color: var(--text);
       font-size: 15px;
     }
-    .text-icon {
-      width: 15px;
-      min-width: 15px;
-      text-align: center;
+    .sidebar-icon {
+      width: 16px;
+      min-width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: #222;
-      font-size: 15px;
-      line-height: 1;
-      font-family: "Times New Roman", serif;
+    }
+    .sidebar-icon svg {
+      width: 15px;
+      height: 15px;
+      display: block;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     .content { min-width: 0; }
     .section { margin-bottom: 44px; scroll-margin-top: 82px; }
@@ -182,9 +192,24 @@
       <p class="sidebar-title">Integrated M.S. &amp; Ph.D. Student</p>
 
       <div class="sidebar-links" aria-label="Profile links">
-        <p><span class="text-icon">●</span><span>Suwon, South Korea</span></p>
-        <p><span class="text-icon">▦</span><span>Ajou University</span></p>
-        <p><span class="text-icon">◎</span><span>Google Scholar</span></p>
+        <p>
+          <span class="sidebar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s6-5.7 6-11a6 6 0 0 0-12 0c0 5.3 6 11 6 11z"></path><circle cx="12" cy="10" r="2.3"></circle></svg>
+          </span>
+          <span>Suwon, South Korea</span>
+        </p>
+        <p>
+          <span class="sidebar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M5 21V9"></path><path d="M19 21V9"></path><path d="M12 3l8 5H4l8-5z"></path><path d="M9 21v-7h6v7"></path></svg>
+          </span>
+          <span>Ajou University</span>
+        </p>
+        <p>
+          <span class="sidebar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 8l9-4 9 4-9 4-9-4z"></path><path d="M7 10.2V15c0 1.8 2.2 3.2 5 3.2s5-1.4 5-3.2v-4.8"></path><path d="M21 8v6"></path></svg>
+          </span>
+          <span>Google Scholar</span>
+        </p>
       </div>
     </aside>
 
@@ -310,16 +335,14 @@
       var targetY = target.getBoundingClientRect().top + window.pageYOffset - 12;
       var distance = targetY - startY;
       var distanceAbs = Math.abs(distance);
-      var speed = 2.2; // average pixels per millisecond; higher value means faster scroll
-      var duration = Math.min(900, Math.max(260, distanceAbs / speed));
+      var speed = 1.54; // about 70% of the previous scroll speed
+      var duration = Math.min(1300, Math.max(320, distanceAbs / speed));
       var startTime = null;
 
       if (distanceAbs < 1) return;
 
-      function easeInOutCubic(t) {
-        return t < 0.5
-          ? 4 * t * t * t
-          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      function easeInOutSine(t) {
+        return -(Math.cos(Math.PI * t) - 1) / 2;
       }
 
       function animate(currentTime) {
@@ -327,7 +350,7 @@
 
         var elapsed = currentTime - startTime;
         var progress = Math.min(elapsed / duration, 1);
-        var eased = easeInOutCubic(progress);
+        var eased = easeInOutSine(progress);
 
         window.scrollTo(0, startY + distance * eased);
 
