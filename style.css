@@ -114,11 +114,13 @@
     .intro-section h2 { margin-bottom: 14px; }
     .section ul { margin: 0; padding-left: 40px; }
     .section li { margin: 7px 0; }
-    .timeline-item { display: grid; grid-template-columns: 150px 1fr; gap: 28px; margin: 26px 0 35px; }
+    .timeline-item { display: grid; grid-template-columns: 150px 1fr; gap: 28px; margin: 26px 0 35px 24px; }
     .timeline-item:last-child { margin-bottom: 0; }
     .timeline-date { color: #111827; font-weight: 700; line-height: 1.55; }
     .timeline-content h3 { margin: 0 0 13px; font-size: 16px; }
     .timeline-content p { color: var(--muted); margin: 0; }
+    #publications h3,
+    #publications .publication-list { margin-left: 24px; }
     .publication-list li { margin: 10px 0; }
     .paper-title { color: #111827; }
     .muted { color: var(--muted); }
@@ -144,7 +146,9 @@
       .section h1 { font-size: 28px; }
       .section h2 { font-size: 23px; }
       .section ul { padding-left: 24px; }
-      .timeline-item { display: block; }
+      .timeline-item { display: block; margin-left: 12px; }
+      #publications h3,
+      #publications .publication-list { margin-left: 12px; }
       .timeline-date { margin-bottom: 8px; }
       .project-meta-list { padding-left: 20px; }
     }
