@@ -1,5 +1,5 @@
 # Jaekoung Choi CV Website
 
-Personal academic CV website for GitHub Pages.
+Single-page academic CV website for GitHub Pages.
 
-Upload the files in this folder to the root of `choijaekoung.github.io`.
+Navigation: Profile, Publications, Projects.

@@ -87,7 +87,7 @@
       font-family: "Times New Roman", serif;
     }
     .content { min-width: 0; }
-    .section { margin-bottom: 44px; }
+    .section { margin-bottom: 44px; scroll-margin-top: 82px; }
     .section h1 {
       margin: 0 0 44px;
       color: var(--heading);

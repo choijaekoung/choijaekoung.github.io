@@ -96,7 +96,7 @@
       font-family: "Times New Roman", serif;
     }
     .content { min-width: 0; }
-    .section { margin-bottom: 44px; }
+    .section { margin-bottom: 44px; scroll-margin-top: 82px; }
     .section h1 {
       margin: 0 0 44px;
       color: var(--heading);
@@ -162,13 +162,13 @@
 <body>
   <nav class="top-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a class="nav-link active" href="#home">Home</a>
+      <a class="nav-link active" href="#profile">Profile</a>
       <a class="nav-link" href="#publications">Publications</a>
       <a class="nav-link" href="#projects">Projects</a>
     </div>
   </nav>
 
-  <div class="page" id="home">
+  <div class="page" id="profile">
     <aside class="sidebar">
       <img class="profile-photo" src="assets/profile.jpg" alt="Jaekoung Choi profile photo" />
 
@@ -184,7 +184,7 @@
 
     <main class="content">
       <section class="section intro-section">
-        <h1>Home</h1>
+        <h1>Profile</h1>
 
         <h2>Jaekoung Choi</h2>
         <ul>
@@ -287,5 +287,21 @@
       </section>
     </main>
   </div>
+
+  <script>
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', link.getAttribute('href'));
+        document.querySelectorAll('.nav-link').forEach(function(item) {
+          item.classList.remove('active');
+        });
+        link.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
