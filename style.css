@@ -7,7 +7,7 @@
       --background: #ffffff;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
       margin: 0;
       color: var(--text);

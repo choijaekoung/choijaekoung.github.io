@@ -16,7 +16,7 @@
       --background: #ffffff;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
       margin: 0;
       color: var(--text);
@@ -289,29 +289,43 @@
   </div>
 
   <script>
-    function smoothScrollTo(target, duration) {
+    var activeScrollAnimation = null;
+
+    function smoothScrollTo(target) {
+      if (activeScrollAnimation) {
+        cancelAnimationFrame(activeScrollAnimation);
+        activeScrollAnimation = null;
+      }
+
       var startY = window.pageYOffset;
       var targetY = target.getBoundingClientRect().top + window.pageYOffset - 12;
       var distance = targetY - startY;
-      var startTime = null;
+      var direction = distance < 0 ? -1 : 1;
+      var remaining = Math.abs(distance);
+      var speed = 1.15; // pixels per millisecond: same scroll speed regardless of distance
+      var lastTime = null;
 
-      function easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      }
+      if (remaining < 1) return;
 
       function animate(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        var elapsed = currentTime - startTime;
-        var progress = Math.min(elapsed / duration, 1);
-        var eased = easeInOutCubic(progress);
-        window.scrollTo(0, startY + distance * eased);
+        if (lastTime === null) lastTime = currentTime;
+        var deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
 
-        if (progress < 1) {
-          window.requestAnimationFrame(animate);
+        var step = speed * deltaTime;
+        remaining = Math.max(0, remaining - step);
+        var currentY = targetY - direction * remaining;
+        window.scrollTo(0, currentY);
+
+        if (remaining > 0) {
+          activeScrollAnimation = window.requestAnimationFrame(animate);
+        } else {
+          window.scrollTo(0, targetY);
+          activeScrollAnimation = null;
         }
       }
 
-      window.requestAnimationFrame(animate);
+      activeScrollAnimation = window.requestAnimationFrame(animate);
     }
 
     document.querySelectorAll('.nav-link').forEach(function(link) {
@@ -328,7 +342,7 @@
         });
         link.classList.add('active');
 
-        smoothScrollTo(target, 850);
+        smoothScrollTo(target);
       });
     });
   </script>
