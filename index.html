@@ -26,7 +26,13 @@
       line-height: 1.65;
     }
     a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
-    .top-nav { border-bottom: 1px solid var(--line); background: #fff; }
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
     .nav-inner {
       max-width: 1320px;
       margin: 0 auto;
@@ -261,7 +267,7 @@
           </li>
           <li>
             <span class="paper-title">Empty Container Repositioning under Demand Uncertainty with Multiple Transportation Speed Options: An Approximate Dynamic Programming Approach</span><br />
-            <strong>J. Choi</strong>, and Y. Shin*. (2026) <em>Computers &amp; Industrial Engineering</em>.
+            <strong>J. Choi</strong>, S.Na, and Y. Shin*. (2026) <em>Computers &amp; Industrial Engineering</em>.
           </li>
         </ul>
 
@@ -332,7 +338,8 @@
       }
 
       var startY = window.pageYOffset;
-      var targetY = target.getBoundingClientRect().top + window.pageYOffset - 12;
+      var navHeight = document.querySelector('.top-nav').offsetHeight || 0;
+      var targetY = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 18;
       var distance = targetY - startY;
       var distanceAbs = Math.abs(distance);
       var speed = 1.54; // about 70% of the previous scroll speed

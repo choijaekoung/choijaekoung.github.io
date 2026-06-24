@@ -17,7 +17,13 @@
       line-height: 1.65;
     }
     a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
-    .top-nav { border-bottom: 1px solid var(--line); background: #fff; }
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
     .nav-inner {
       max-width: 1320px;
       margin: 0 auto;
