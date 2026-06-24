@@ -189,52 +189,26 @@ a {
 }
 
 .project-logo {
-  width: 180px;
-  min-height: 70px;
+  width: 190px;
+  min-height: 86px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.05;
 }
 
-.logo-lg {
-  color: #5f6368;
-  font-size: 37px;
+.project-logo-img {
+  display: block;
+  max-width: 190px;
+  max-height: 96px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
-.logo-gov {
-  color: #334155;
-  font-size: 30px;
-  border-left: 12px solid #075985;
-  border-radius: 40px;
-}
-
-.logo-kia {
-  color: #05141f;
-  font-size: 40px;
-  font-style: italic;
-}
-
-.logo-nrf {
-  color: #1363b1;
-  font-size: 34px;
-}
-
-.logo-nrf span {
-  font-size: 16px;
-  letter-spacing: -0.5px;
-}
-
-.logo-samsung {
-  color: #005bbb;
-  font-size: 24px;
-}
-
-.logo-samsung span {
-  font-size: 32px;
+.project-item:nth-of-type(4) .project-logo-img,
+.project-item:nth-of-type(5) .project-logo-img {
+  max-width: 210px;
+  max-height: 118px;
 }
 
 .project-info h3 {
@@ -279,6 +253,11 @@ a {
   .project-logo {
     width: 140px;
   }
+
+  .project-logo-img {
+    max-width: 140px;
+    max-height: 78px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -306,5 +285,10 @@ a {
     width: 100%;
     min-height: 44px;
     margin-bottom: 8px;
+  }
+
+  .project-logo-img {
+    max-width: 180px;
+    max-height: 82px;
   }
 }

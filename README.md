@@ -26,3 +26,6 @@ assets/profile.jpg
 - 프로필 사진은 `assets/profile.jpg`를 같은 파일명으로 교체하면 됩니다.
 
 프로젝트 로고는 현재 텍스트 기반으로 처리되어 있습니다. 실제 로고 이미지 파일이 있으면 `assets` 폴더에 넣고 `index.html`에서 교체할 수 있습니다.
+
+
+Updated: sidebar Google Scholar text, SLSCM Lab hyperlink, and project logo image slots.
