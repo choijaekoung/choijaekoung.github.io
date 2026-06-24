@@ -309,24 +309,29 @@
       var startY = window.pageYOffset;
       var targetY = target.getBoundingClientRect().top + window.pageYOffset - 12;
       var distance = targetY - startY;
-      var direction = distance < 0 ? -1 : 1;
-      var remaining = Math.abs(distance);
-      var speed = 1.15; // pixels per millisecond: same scroll speed regardless of distance
-      var lastTime = null;
+      var distanceAbs = Math.abs(distance);
+      var speed = 2.2; // average pixels per millisecond; higher value means faster scroll
+      var duration = Math.min(900, Math.max(260, distanceAbs / speed));
+      var startTime = null;
 
-      if (remaining < 1) return;
+      if (distanceAbs < 1) return;
+
+      function easeInOutCubic(t) {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
 
       function animate(currentTime) {
-        if (lastTime === null) lastTime = currentTime;
-        var deltaTime = currentTime - lastTime;
-        lastTime = currentTime;
+        if (startTime === null) startTime = currentTime;
 
-        var step = speed * deltaTime;
-        remaining = Math.max(0, remaining - step);
-        var currentY = targetY - direction * remaining;
-        window.scrollTo(0, currentY);
+        var elapsed = currentTime - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = easeInOutCubic(progress);
 
-        if (remaining > 0) {
+        window.scrollTo(0, startY + distance * eased);
+
+        if (progress < 1) {
           activeScrollAnimation = window.requestAnimationFrame(animate);
         } else {
           window.scrollTo(0, targetY);
